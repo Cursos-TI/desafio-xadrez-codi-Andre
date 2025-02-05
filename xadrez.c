@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+void movimentarPeca(int casas, char peca[], char movimento1[], char movimento2[]);
 // Desafio de Xadrez - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
@@ -46,9 +47,35 @@ int main() {
     // Nível Mestre - Funções Recursivas e Loops Aninhados
     // Sugestão: Substitua as movimentações das peças por funções recursivas.
     // Exemplo: Crie uma função recursiva para o movimento do Bispo.
+    movimentarPeca(5, "Bispo", "Cima", "Direita");
+    movimentarPeca(5, "Torre", "Direita", "");
+    movimentarPeca(8, "Rainha", "Esquerda", "");
 
     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
     // Inclua o uso de continue e break dentro dos loops.
+    for (int cima = 1, direita = 2; cima > 0; cima--)
+    {
+        printf("Cavalo: Cima\n");
+
+        while(direita > 0) {
+            printf("Cavalo: Direita\n");
+            direita--;
+        };
+    };
 
     return 0;
 }
+
+void movimentarPeca(int casas, char peca[], char movimento1[], char movimento2[]) {
+    if (casas <= 0) {
+        return;
+    };
+
+    printf("%s: %s\n", peca, movimento1);
+
+    if (movimento2 != "") {
+        printf("%s: %s\n", peca, movimento2);
+    }
+
+    movimentarPeca(casas - 1, peca, movimento1, movimento2);
+};
